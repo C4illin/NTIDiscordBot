@@ -12,7 +12,7 @@ bot.on("ready", () => {
   console.log("Discord.js Connected")
 })
 
-const klasser = ["1a", "1b", "1c", "1d", "1e", "2A", "2B", "2C", "2D", "2E", "3a", "3b", "3c", "3d", "3e"]
+const klasser = ["1A", "1B", "1C", "1D", "1E", "2A", "2B", "2C", "2D", "2E", "3A", "3B", "3C", "3D", "3E"]
 
 bot.on("message", (message) => {
   if (message.author.bot) return
@@ -29,15 +29,9 @@ bot.on("message", (message) => {
     })
     break
   case "klass":
-    var klass = split[1]
+    var klass = split[1].toUpperCase()
     message.delete()
-    if (klasser.includes(klass) || klasser.includes(klass.toLowerCase()) || klasser.includes(klass.toUpperCase())){
-      if (klasser.includes(klass.toLowerCase())) {
-        klass = klass.toLowerCase()
-      } else if (klasser.includes(klass.toUpperCase())) {
-        klass = klass.toUpperCase()
-      }
-
+    if (klasser.includes(klass)){
       if (message.member.roles.cache.some(role => role.name !== 'Elev')) {
         const elev = message.guild.roles.cache.find(role => role.name === 'Elev')
         message.member.roles.add(elev)
